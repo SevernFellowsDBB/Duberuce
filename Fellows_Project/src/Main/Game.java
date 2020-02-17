@@ -7,6 +7,7 @@ import gameEngine.Utilities.Transformation;
 import gameEngine.gameModels.Block;
 import gameEngine.gameModels.Chunk;
 import gameEngine.gameModels.Terrain;
+import gameEngine.gameModels.TerrainMesh;
 import org.joml.AABBf;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -20,7 +21,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Game {
     private boolean transparent=false;
-    private static float MOUSE_SENSITIVITY = 2f/3;
+    private static float MOUSE_SENSITIVITY = 2/3f;
     private Vector3f cameraInc;
     private final Camera camera;
     private ArrayList<Mesh> meshes = new ArrayList();
@@ -32,12 +33,14 @@ public class Game {
     private ArrayList<Block> blocks = new ArrayList();
     ArrayList<Block> finalList = new ArrayList();
     ArrayList<Block> BWHDTRBOAAMBW = new ArrayList();
-    private static float CAMERA_POS_STEP = .25f;
+    private static float CAMERA_POS_STEP = .5f;
     int numChunks = 16;
     Chunk[][] chunks = new Chunk[numChunks][numChunks];
     Vector2f currentChunk;
     Transformation tr = new Transformation();
     FrustumCulling fr = new FrustumCulling();
+    Terrain terrain = new Terrain(new PerlinNoise(256, 256));
+    TerrainMesh terrainMesh = new TerrainMesh(new PerlinNoise(256, 256));
     int renderDistance = 30;
     int selectedType = 1;
 
@@ -49,9 +52,9 @@ public class Game {
 
 
     public void init(Window window) throws Exception {
+        terrainMesh.setMesh();
         renderer.init(window);
-        Terrain terrain = new Terrain(new PerlinNoise(256, 256));
-        for(int i = 0; i < 9; i++){
+        for(int i = 0; i < 10; i++){
             meshes.add(loadMesh("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\models\\cube.obj"));
         }
         Texture texture = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Grass.png");
@@ -68,12 +71,14 @@ public class Game {
         meshes.get(6).setTexture(texture6);
         Texture texture7 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Selector.png");
         meshes.get(7).setTexture(texture7);
-        Texture texture8 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Cactus.jpeg");
+        Texture texture8 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\sand.jpeg");
         meshes.get(8).setTexture(texture8);
+        Texture texture9 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Cactus.jpeg");
+        meshes.get(9).setTexture(texture9);
         ArrayList<Block> map = new ArrayList();
         for (int i = 0; i < numChunks; i++) {
             for (int k = 0; k < numChunks; k++) {
-                Chunk hold = new Chunk(terrain.getTerr(i, k));
+                Chunk hold = new Chunk(terrain.getTerr(i, k), terrainMesh.getBiome(i,k));
                 map.addAll(hold.getChunk());
                 chunks[i][k] = hold;
             }
@@ -111,6 +116,9 @@ public class Game {
             }
             if (map.get(i).getID() == 8) {
                 blocks.get(i).setMesh(meshes.get(8));
+            }
+            if (map.get(i).getID() == 9) {
+                blocks.get(i).setMesh(meshes.get(9));
             }
         }
         currentChunk = getCurrentPlayerChunk();
@@ -334,7 +342,6 @@ public class Game {
         finalList=new ArrayList<>();
         if(transparent) {
             int rotY=(int)camera.getRotation().y;
-            System.out.println(rotY);
             if ((rotY % 360 >= 45 && rotY % 360 < 135) || (rotY%360<=-225 && rotY%360>-315)) {
                 for (int k = renderDistance; k > -renderDistance; k--) {
                     for (int i = 0; i < BWHDTRBOAAMBW.size(); i++) {
@@ -423,6 +430,9 @@ public class Game {
             if (passed.get(i).getID() == 8) {
                 passed.get(i).setMesh(meshes.get(8));
             }
+            if (passed.get(i).getID() == 9) {
+                passed.get(i).setMesh(meshes.get(9));
+            }
         }
     }
 
@@ -448,6 +458,8 @@ public class Game {
             if (passed.getID() == 8) {
                 passed.setMesh(meshes.get(8));
             }
-
+            if (passed.getID() == 9) {
+                passed.setMesh(meshes.get(9));
+            }
     }
 }

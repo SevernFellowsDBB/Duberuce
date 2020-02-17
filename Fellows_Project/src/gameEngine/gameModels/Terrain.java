@@ -51,6 +51,10 @@ public Terrain(PerlinNoise p)
             }
             return trees;
         }
+        public int getBiome(int xCord, int yCord)
+        {
+          return 0;
+        }
 
 }
 

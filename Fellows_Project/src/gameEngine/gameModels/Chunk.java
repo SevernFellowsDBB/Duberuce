@@ -11,21 +11,22 @@ public class Chunk {
     private int z;
     private final int h = 64;
     private final int l = 16;
+    private int[] ID;
     private Block[][][] blocks = new Block[l][h][l];
     int[] treeX;
     int[] treeY;
     int[] treeZ;
-    public Chunk(ArrayList<Vector3f> heights) {
-        x= (int) heights.get(heights.size()-1).x;
+    public Chunk(ArrayList<Vector3f> heights, int biomeID) {
+        x = (int) heights.get(heights.size()-1).x;
 
         z= (int) heights.get(heights.size()-1).y;
-        System.out.println(x+" " + z);
+        ID = ChunkBlockType.getBlockIds(biomeID);
         for(int i=0;i<blocks.length;i++){
             for(int j = 0;j<blocks[0].length;j++){
                 for(int k = 0;k<blocks[0][0].length;k++){
                     Vector3f temp = new Vector3f(i+x*16,j-h/2,k+z*16);
                     if(j<h/4) {
-                        blocks[i][j][k] = new Block(5, temp);
+                        blocks[i][j][k] = new Block(ID[4], temp);
                     }
                     else {
                         blocks[i][j][k] = new Block(0, temp);
@@ -44,10 +45,10 @@ public class Chunk {
          }
          int numDirt = 3;
          if(blocks[(int) temp.x - x * 16][(int) temp.y + h / 2+1][(int) temp.z - z * 16].getID()==0) {
-             blocks[(int) temp.x - x * 16][(int) temp.y + h / 2][(int) temp.z - z * 16] = new Block(1, temp);
+             blocks[(int) temp.x - x * 16][(int) temp.y + h / 2][(int) temp.z - z * 16] = new Block(ID[0], temp);
          }
          else{
-             blocks[(int) temp.x - x * 16][(int) temp.y + h / 2][(int) temp.z - z * 16] = new Block(2, temp);
+             blocks[(int) temp.x - x * 16][(int) temp.y + h / 2][(int) temp.z - z * 16] = new Block(ID[1], temp);
          }
 
           for(int j = (int) temp.y+h/2-1; j >= 0; j--)
@@ -55,14 +56,14 @@ public class Chunk {
               if(numDirt>0) {
                   Vector3f temp2 = new Vector3f(heights.get(i).x, j - h / 2, heights.get(i).z);
 
-                      blocks[(int) temp2.x - x * 16][(int) temp2.y + h / 2][(int) temp2.z - z * 16] = new Block(2, temp2);
+                      blocks[(int) temp2.x - x * 16][(int) temp2.y + h / 2][(int) temp2.z - z * 16] = new Block(ID[1], temp2);
 
                   numDirt--;
               }
               else{
                   Vector3f temp2 = new Vector3f(heights.get(i).x, j - h / 2, heights.get(i).z);
 
-                      blocks[(int) temp2.x - x * 16][(int) temp2.y + h / 2][(int) temp2.z - z * 16] = new Block(6, temp2);
+                      blocks[(int) temp2.x - x * 16][(int) temp2.y + h / 2][(int) temp2.z - z * 16] = new Block(ID[5], temp2);
 
               }
           }
@@ -135,7 +136,7 @@ public class Chunk {
 
           }
           if(quit < 100) {
-              Tree t = new Tree(treeX[i] + x * 16, treeY[i] - h / 2, treeZ[i] + z * 16);
+              Tree t = new Tree(treeX[i] + x * 16, treeY[i] - h / 2, treeZ[i] + z * 16,ID[2],ID[3]);
               ArrayList<Block> treeList = t.getTree();
           for(int j = 0;j<treeList.size();j++) {
               Block temp = treeList.get(j);

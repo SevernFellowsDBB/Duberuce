@@ -53,7 +53,6 @@ public class Camera {
     }
 
     public void moveRotation(float offSetX, float offSetY, float offSetZ){
-        System.out.println(offSetX);
         rotation.x+=offSetX;
         rotation.y+=offSetY;
         rotation.z+=offSetZ;

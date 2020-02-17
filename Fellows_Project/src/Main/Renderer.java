@@ -52,7 +52,6 @@ public class Renderer {
         Matrix4f viewMatrix = transformation.getViewMatrix(camera);
         shaders.setUniform("texture_sampler", 0);
 
-        int len = 0;
         for(Block block : blocks){
             if(block.getMesh()!=null) {
                 Mesh mesh = block.getMesh();
@@ -61,10 +60,7 @@ public class Renderer {
                 shaders.setUniform("color", mesh.getColor());
                 shaders.setUniform("useColor", block.getSelected() ? 1 : 0);
                 shaders.setUniform("changePos", 0);
-
-
                 block.getMesh().render();
-                len++;
             }
         }
         shaders.unbind();

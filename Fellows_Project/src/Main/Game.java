@@ -41,7 +41,7 @@ public class Game {
     FrustumCulling fr = new FrustumCulling();
     Terrain terrain = new Terrain(new PerlinNoise(256, 256));
     TerrainMesh terrainMesh = new TerrainMesh(new PerlinNoise(256, 256));
-    int renderDistance = 40;
+    int renderDistance = 30;
     int selectedType = 1;
 
     public Game(){
@@ -311,20 +311,23 @@ public class Game {
         }
         int index=clicker.selectBlock(blocks, camera);
             if(index!=-1) {
+                Block hold = blocks.get(index);
+                Vector2f clickedChunk = hold.getChunk();
                 if (MouseInput.isLeftButtonPressed()) {
-                    currentChunk = getCurrentChunkPos(index);
-                    ArrayList<Block> newRenderedBlocks = chunks[(int) currentChunk.x ][(int) currentChunk.y].update(blocks.get(index));
+                    ArrayList<Block> newRenderedBlocks = chunks[(int) clickedChunk.x ][(int) clickedChunk.y].update(blocks.get(index));
                     assignMesh(newRenderedBlocks);
                     blocks.remove(index);
                     blocks.addAll(newRenderedBlocks);
                 }
                 if(MouseInput.isRightButtonPressed()){
-                    currentChunk = getCurrentChunkPos(index);
                     int face = cFace.selectFace(camera,blocks.get(index));
-                    Block b = chunks[(int) currentChunk.x ][(int) currentChunk.y].addBlock(face,blocks.get(index));
-                    b.setId(selectedType);
-                    assignMesh(b);
-                    blocks.add(b);
+                    clickedChunk = sameChunkChecker(face, hold, clickedChunk);
+                    if(clickedChunk != null) {
+                        Block b = chunks[(int) clickedChunk.x][(int) clickedChunk.y].addBlock(face, blocks.get(index));
+                        b.setId(selectedType);
+                        assignMesh(b);
+                        blocks.add(b);
+                    }
                 }
             }
         //update corresponding meshes
@@ -461,5 +464,44 @@ public class Game {
             if (passed.getID() == 9) {
                 passed.setMesh(meshes.get(9));
             }
+    }
+
+    public Vector2f sameChunkChecker(int face, Block b, Vector2f curChunk){
+        if(face == 0){
+            if (b.getPos().x - 1 - b.getChunk().x * 16 < 0) {
+                return new Vector2f(curChunk.x-1, curChunk.y);
+            }
+            return curChunk;
+        }
+        if(face == 1){
+            if (b.getPos().x + 1 - b.getChunk().x * 16 > 15) {
+                return new Vector2f(curChunk.x + 1, curChunk.y);
+            }
+            return curChunk;
+        }
+        if(face == 2){
+            if (b.getPos().z - 1 - b.getChunk().y * 16 < 0) {
+                return new Vector2f(curChunk.x, curChunk.y - 1);
+            }
+            return curChunk;
+        }
+        if(face == 3){
+            if (b.getPos().z + 1 - b.getChunk().y * 16 > 15) {
+                return new Vector2f(curChunk.x, curChunk.y + 1);
+            }
+            return curChunk;
+        }
+        if (face == 4){
+            if (b.getPos().y - 1 < 0) {
+                return null;
+            }
+            return curChunk;
+        }
+        else {
+            if (b.getPos().y + 1 > 63) {
+                return null;
+            }
+            return curChunk;
+        }
     }
 }

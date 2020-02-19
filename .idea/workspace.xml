@@ -7,61 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a3da068-837d-43dc-98b7-ed5d5be7ed29" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/JOML.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/glm_0_9_9_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/glm_master__2_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/joml_1_9_17__1_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl_release_3_2_3_custom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.floo" beforeDir="false" afterPath="$PROJECT_DIR$/.floo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Fellows_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Fellows_Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/HelloWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/HelloWorld.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/META-INF/Fellows_Project.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/Main/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/Main/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/Main/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/Main/Renderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/Main/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/Main/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Block.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Camera.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/ClickedBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/ClickedBlock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/ClickedFace.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/ClickedFace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Mesh.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Mesh.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise$Rotation.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise$Rotation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise$vec2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise$vec2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/PerlinNoise.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/ShaderProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/ShaderProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Terrain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Texture.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Texture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/FrustumCulling.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/FrustumCulling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/OBJLoader$Face.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/OBJLoader$Face.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/OBJLoader$IDxGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/OBJLoader$IDxGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/OBJLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/OBJLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Physics.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Physics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Timer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Timer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Transformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Transformation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Utilities/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/Block.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Block.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Cactus.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Cactus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Cactus.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Chunk.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Chunk.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/ChunkBlockType.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/ChunkBlockType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Terrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Terrain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/TerrainMesh.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/TerrainMesh.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/TerrainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/TerrainTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/TextureAssigner.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/TextureAssigner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Tree.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/gameModels/Tree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/mouseInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/gameEngine/mouseInput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/shaders/fragment.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/shaders/vertex.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/src/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/Out/production/Fellows_Project/textures/grassBlock.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Fellows_Project/src/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/Main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/Main/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/Main/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/shaders/fragment.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/shaders/fragment.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/shaders/vertex.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/shaders/vertex.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/Block.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/gameModels/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/gameModels/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/gameModels/Cactus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/gameModels/Chunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fellows_Project/src/gameEngine/gameModels/Chunk.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,12 +50,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JOML.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -224,33 +182,33 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="543" y="336" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1582130001984" />
-    <state width="1340" height="250" key="GridCell.Tab.0.bottom" timestamp="1582133061473">
+    <state width="1340" height="250" key="GridCell.Tab.0.bottom" timestamp="1582136286931">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1340" height="250" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1582133061473" />
-    <state width="1340" height="250" key="GridCell.Tab.0.center" timestamp="1582133061457">
+    <state width="1340" height="250" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1582136286931" />
+    <state width="1340" height="250" key="GridCell.Tab.0.center" timestamp="1582136286931">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1340" height="250" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1582133061457" />
-    <state width="1340" height="250" key="GridCell.Tab.0.left" timestamp="1582133061457">
+    <state width="1340" height="250" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1582136286931" />
+    <state width="1340" height="250" key="GridCell.Tab.0.left" timestamp="1582136286931">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1340" height="250" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1582133061457" />
-    <state width="1340" height="250" key="GridCell.Tab.0.right" timestamp="1582133061457">
+    <state width="1340" height="250" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1582136286931" />
+    <state width="1340" height="250" key="GridCell.Tab.0.right" timestamp="1582136286931">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1340" height="250" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1582133061457" />
-    <state x="451" y="107" key="SettingsEditor" timestamp="1582130883662">
+    <state width="1340" height="250" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1582136286931" />
+    <state x="451" y="107" key="SettingsEditor" timestamp="1582133416146">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="451" y="107" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1582130883662" />
-    <state x="541" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1582130955605">
+    <state x="451" y="107" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1582133416146" />
+    <state x="541" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1582133453625">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="541" y="328" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1582130955605" />
-    <state x="671" y="245" key="run.anything.popup" timestamp="1582131392479">
+    <state x="541" y="328" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1582133453625" />
+    <state x="671" y="245" key="run.anything.popup" timestamp="1582134749668">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="671" y="245" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1582131392479" />
+    <state x="671" y="245" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1582134749668" />
   </component>
 </project>

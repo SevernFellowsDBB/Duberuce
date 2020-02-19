@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Chunk {
    
     private ArrayList<Block> renderedBlocks = new ArrayList<Block>();
+    private boolean edited;
     private int x;
     private int z;
     private final int h = 64;
@@ -38,7 +39,7 @@ public class Chunk {
       {
          Vector3f temp = new Vector3f(heights.get(i).x,heights.get(i).y,heights.get(i).z);
          if(temp.y>=h/2){
-             temp.y=h/2-1;
+             temp.y=h/2-6;
          }
          else if(temp.y <= -h/2){
              temp.y = -h/2+2;
@@ -152,6 +153,14 @@ public class Chunk {
 
     }
 
+    public boolean isEdited() {
+        return edited;
+    }
+
+    public void setEdited(boolean edited) {
+        this.edited = edited;
+    }
+
     public int getX()
     {
       return x;
@@ -216,9 +225,9 @@ public class Chunk {
     }
 
     public Block addBlock(int index,Block b){
-        int bX = ((int) b.getPos().x - x * l);
+        int bX = (int) (b.getPos().x - x * l);
         int bY = (int) b.getPos().y + h / 2;
-        int bZ = ((int) b.getPos().z - z * l);
+        int bZ = (int) (b.getPos().z - z * l);
         if(index == 0){
             Block add = blocks[bX-1][bY][bZ];
             add.setId(2);

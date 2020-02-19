@@ -2,6 +2,7 @@ package gameEngine.gameModels;
 
 import gameEngine.Mesh;
 import org.joml.AABBf;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 
@@ -91,5 +92,9 @@ public class Block {
     public AABBf getAab(){
         AABBf box = new AABBf(pos.x-scale,pos.y-scale,pos.z-scale,pos.x+scale,pos.y+scale,pos.z+scale);
         return box;
+    }
+
+    public Vector2f getChunk(){
+        return new Vector2f((int)(pos.x/16), (int)(pos.z/16));
     }
 }

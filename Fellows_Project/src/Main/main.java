@@ -11,7 +11,6 @@ public class main {
             gameDriver.run();
         }
         catch (Exception e){
-
         }
     }
 }

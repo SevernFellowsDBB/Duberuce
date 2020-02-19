@@ -11,5 +11,6 @@
     <orderEntry type="library" name="JLWGL- all1" level="project" />
     <orderEntry type="library" name="java glm" level="project" />
     <orderEntry type="library" name="joml-1.9.16" level="project" />
+    <orderEntry type="library" name="JOML" level="project" />
   </component>
 </module>

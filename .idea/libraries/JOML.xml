@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="joml-1.9.17 (1)">
+  <library name="JOML">
     <CLASSES>
-      <root url="jar://$USER_HOME$/OneDrive/Desktop/joml-1.9.17 (1).jar!/" />
+      <root url="jar://$PROJECT_DIR$/../JOML.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

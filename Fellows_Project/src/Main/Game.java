@@ -41,7 +41,7 @@ public class Game {
     FrustumCulling fr = new FrustumCulling();
     Terrain terrain = new Terrain(new PerlinNoise(256, 256));
     TerrainMesh terrainMesh = new TerrainMesh(new PerlinNoise(256, 256));
-    int renderDistance = 30;
+    int renderDistance = 40;
     int selectedType = 1;
 
     public Game(){
@@ -55,25 +55,25 @@ public class Game {
         terrainMesh.setMesh();
         renderer.init(window);
         for(int i = 0; i < 10; i++){
-            meshes.add(loadMesh("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\models\\cube.obj"));
+            meshes.add(loadMesh("Fellows_Project/src/models/cube.obj"));
         }
-        Texture texture = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Grass.png");
+        Texture texture = new Texture("Fellows_Project/src/textures/Grass.png");
         meshes.get(1).setTexture(texture);
-        Texture texture2 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Dirt.png");
+        Texture texture2 = new Texture("Fellows_Project/src/textures/Dirt.png");
         meshes.get(2).setTexture(texture2);
-        Texture texture3 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Trunk.png");
+        Texture texture3 = new Texture("Fellows_Project/src/textures/Trunk.png");
         meshes.get(3).setTexture(texture3);
-        Texture texture4 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Leaf.png");
+        Texture texture4 = new Texture("Fellows_Project/src/textures/Leaf.png");
         meshes.get(4).setTexture(texture4);
-        Texture texture5 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Water.png");
+        Texture texture5 = new Texture("Fellows_Project/src/textures/Water.png");
         meshes.get(5).setTexture(texture5);
-        Texture texture6 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Stone.png");
+        Texture texture6 = new Texture("Fellows_Project/src/textures/Stone.png");
         meshes.get(6).setTexture(texture6);
-        Texture texture7 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Selector.png");
+        Texture texture7 = new Texture("Fellows_Project/src/textures/Selector.png");
         meshes.get(7).setTexture(texture7);
-        Texture texture8 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\sand.jpeg");
+        Texture texture8 = new Texture("Fellows_Project/src/textures/sand.jpeg");
         meshes.get(8).setTexture(texture8);
-        Texture texture9 = new Texture("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\textures\\Cactus.jpeg");
+        Texture texture9 = new Texture("Fellows_Project/src/textures/Cactus.jpeg");
         meshes.get(9).setTexture(texture9);
         ArrayList<Block> map = new ArrayList();
         for (int i = 0; i < numChunks; i++) {

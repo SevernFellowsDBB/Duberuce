@@ -21,10 +21,10 @@ public class ShaderProgram {
         uniforms = new HashMap<>();
         programID = glCreateProgram();
         if(programID == 0){
-            throw new Exception("Could not create shaders");
+            throw new Exception("Could not create gameEngine.shaders");
         }
-        loadVertexShader("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\shaders\\vertex.shader");
-        loadFragmentShader("C:\\Users\\student\\floobits\\share\\Duberuce\\Fellows_Project_1\\Fellows_Project\\src\\shaders\\fragment.shader");
+        loadVertexShader("Fellows_Project/src/gameEngine/shaders/vertex.shader");
+        loadFragmentShader("Fellows_Project/src/gameEngine/shaders/fragment.shader");
         glCompileShader(vertexShaderID);
         glCompileShader(fragmentShaderID);
         glAttachShader(programID, vertexShaderID);

@@ -52,6 +52,7 @@ public class driver implements Runnable{
         boolean running = true;
         while(running && !window.windowShouldClose()){
             elapsedTime = timer.getElapsedTime();
+            System.out.println(1/elapsedTime);
             holder += elapsedTime;
 
             input();

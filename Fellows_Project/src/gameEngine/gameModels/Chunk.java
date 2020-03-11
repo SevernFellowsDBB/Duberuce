@@ -3,6 +3,7 @@ package gameEngine.gameModels;
 import org.joml.Vector3f;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Chunk {
    
@@ -17,6 +18,12 @@ public class Chunk {
     int[] treeX;
     int[] treeY;
     int[] treeZ;
+
+    public Chunk(int x, int z){
+        this.x = x;
+        this.z = z;
+    }
+
     public Chunk(ArrayList<Vector3f> heights, int biomeID) {
         x = (int) heights.get(heights.size()-1).x;
 
@@ -181,6 +188,7 @@ public class Chunk {
     public Block getBlock(float cX,float cY,float cZ){
         return blocks[(int)cX-x*l][(int)cY+32][(int)cZ-z*l];
     }
+
     public ArrayList<Block> update(Block selectedBlock){
         ArrayList<Block> newBlocks = new ArrayList<Block>();
         selectedBlock.setId(0);
@@ -273,4 +281,22 @@ public class Chunk {
         return null;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chunk)) return false;
+        Chunk chunk = (Chunk) o;
+        return x == chunk.x &&
+                z == chunk.z;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, z);
+    }
+
+    @Override
+    public String toString() {
+        return x + " " + z;
+    }
 }

@@ -13,6 +13,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import static gameEngine.Utilities.OBJLoader.loadMesh;
 import static org.joml.Intersectionf.testAabAab;
@@ -35,24 +36,27 @@ public class Game {
     ArrayList<Block> BWHDTRBOAAMBW = new ArrayList();
     private static float CAMERA_POS_STEP = .5f;
     int numChunks = 16;
-    Chunk[][] chunks = new Chunk[numChunks][numChunks];
+    int loadedChunks = 5;
+    ArrayList<Chunk> chunks;
+    ArrayList<Chunk> renderedChunks;
     Vector2f currentChunk;
     Transformation tr = new Transformation();
     FrustumCulling fr = new FrustumCulling();
     Terrain terrain = new Terrain(new PerlinNoise(256, 256));
     TerrainMesh terrainMesh = new TerrainMesh(new PerlinNoise(256, 256));
-    int renderDistance = 30;
+    int renderDistance = 60;
     int selectedType = 1;
 
     public Game(){
         renderer = new Renderer();
         camera=new Camera();
         cameraInc = new Vector3f(0,0,0);
+        chunks = new ArrayList<Chunk>();
+        renderedChunks = new ArrayList<Chunk>();
     }
 
 
     public void init(Window window) throws Exception {
-        terrainMesh.setMesh();
         renderer.init(window);
         for(int i = 0; i < 10; i++){
             meshes.add(loadMesh("Fellows_Project/src/models/cube.obj"));
@@ -75,20 +79,19 @@ public class Game {
         meshes.get(8).setTexture(texture8);
         Texture texture9 = new Texture("Fellows_Project/src/textures/Cactus.jpeg");
         meshes.get(9).setTexture(texture9);
-        ArrayList<Block> map = new ArrayList();
-        for (int i = 0; i < numChunks; i++) {
-            for (int k = 0; k < numChunks; k++) {
-                Chunk hold = new Chunk(terrain.getTerr(i, k), terrainMesh.getBiome(i,k));
-                map.addAll(hold.getChunk());
-                chunks[i][k] = hold;
-            }
-        }
-        int spawnChunk = numChunks*numChunks;
+        int spawnChunk = (int)(Math.random()*10);
         int spawn = (int) (Math.random() * 256) * spawnChunk;
         int pickSpawn = 0;
-        blocks.addAll(map);
+        for (int i = spawnChunk - loadedChunks / 2; i < spawnChunk + loadedChunks / 2 + 1; i++) {
+            for (int k = spawnChunk - loadedChunks / 2; k < spawnChunk + loadedChunks / 2 + 1; k++) {
+                Chunk c = loadChunk(i, k);
+                blocks.addAll(c.getChunk());
+                addChunk(c);
+                renderedChunks.add(c);
+            }
+        }
         for (int i = 0; i < blocks.size(); i++) {
-            if (map.get(i).getID() == 1) {
+            if (blocks.get(i).getID() == 1) {
                 blocks.get(i).setMesh(meshes.get(1));
                 if (pickSpawn == spawn) {
                     camera.setPosition(blocks.get(i).getPos().x, blocks.get(i).getPos().y + 20, blocks.get(i).getPos().z);
@@ -99,30 +102,9 @@ public class Game {
                 }
                 pickSpawn++;
             }
-            if (map.get(i).getID() == 2) {
-                blocks.get(i).setMesh(meshes.get(2));
-            }
-            if (map.get(i).getID() == 3) {
-                blocks.get(i).setMesh(meshes.get(3));
-            }
-            if (map.get(i).getID() == 4) {
-                blocks.get(i).setMesh(meshes.get(4));
-            }
-            if (map.get(i).getID() == 5) {
-                blocks.get(i).setMesh(meshes.get(5));
-            }
-            if (map.get(i).getID() == 6) {
-                blocks.get(i).setMesh(meshes.get(6));
-            }
-            if (map.get(i).getID() == 8) {
-                blocks.get(i).setMesh(meshes.get(8));
-            }
-            if (map.get(i).getID() == 9) {
-                blocks.get(i).setMesh(meshes.get(9));
-            }
         }
+        assignMesh(blocks);
         currentChunk = getCurrentPlayerChunk();
-
     }
 
 
@@ -270,15 +252,12 @@ public class Game {
         return finalPos;
     }
 
-
-    public int blockBelow(Vector3f pos){
-        return chunks[(int)getCurrentPlayerChunk().x][(int)getCurrentPlayerChunk().y].getBlock(pos.x,(float)(camera.getPosition().y-2),pos.z).getID();
-
-
-    }
-
     public void update(float interval, mouseInput MouseInput) {
+        Vector2f preChunkPos = new Vector2f(camera.getPosition().x/16, camera.getPosition().z/16);
         camera.movePosition(cameraInc.x*CAMERA_POS_STEP, cameraInc.y*CAMERA_POS_STEP, cameraInc.z*CAMERA_POS_STEP);
+        if(Math.abs((int)(camera.getPosition().x / 16) - preChunkPos.x) > .5 || Math.abs((int)(camera.getPosition().z / 16) - preChunkPos.y) > .5){
+            changeRenderedChunks();
+        }
         if(MouseInput.isInWindow() && MouseInput.wasInWindow()){
             Vector2f rotVec = MouseInput.getDisplayVec();
             if(wasNotButNowItIs){
@@ -293,43 +272,39 @@ public class Game {
             }
         }
         MouseInput.setInWindow();
+        System.out.println(preChunkPos);
     }
 
     public void updateWorld(mouseInput MouseInput, Window window) {
         //pick the selected block
 
-        blocks=new ArrayList<Block>();
-        Vector2f playerPos = getCurrentPlayerChunk();
-        for(int i=-(renderDistance/16+1);i<renderDistance/16+2;i++){
-            for(int k=-(renderDistance/16+1);k<renderDistance/16+2;k++){
-                if((int)playerPos.x+i>-1 && (int)playerPos.x+i<numChunks){
-                    if((int)playerPos.y+k>-1 && (int)playerPos.y+k<numChunks){
-                        blocks.addAll(chunks[i+(int)playerPos.x][k+(int)playerPos.y].getChunk());
-                    }
-                }
-            }
-        }
-        int index=clicker.selectBlock(blocks, camera);
+        int index = clicker.selectBlock(blocks, camera);
+        int chunkIndex = -1;
             if(index!=-1) {
                 Block hold = blocks.get(index);
                 Vector2f clickedChunk = hold.getChunk();
                 if (MouseInput.isLeftButtonPressed()) {
-                    ArrayList<Block> newRenderedBlocks = chunks[(int) clickedChunk.x ][(int) clickedChunk.y].update(blocks.get(index));
+                    chunkIndex = findChunk((int) clickedChunk.x, (int) clickedChunk.y);
+                    ArrayList<Block> newRenderedBlocks = chunks.get(chunkIndex).update(blocks.get(index));
                     assignMesh(newRenderedBlocks);
-                    blocks.remove(index);
-                    blocks.addAll(newRenderedBlocks);
                 }
                 if(MouseInput.isRightButtonPressed()){
                     int face = cFace.selectFace(camera,blocks.get(index));
                     clickedChunk = sameChunkChecker(face, hold, clickedChunk);
                     if(clickedChunk != null) {
-                        Block b = chunks[(int) clickedChunk.x][(int) clickedChunk.y].addBlock(face, blocks.get(index));
+                        chunkIndex = findChunk((int) clickedChunk.x, (int) clickedChunk.y);
+                        Block b = chunks.get(chunkIndex).addBlock(face, blocks.get(index));
                         b.setId(selectedType);
                         assignMesh(b);
-                        blocks.add(b);
                     }
                 }
+                chunks.get(chunkIndex).setEdited(true);
             }
+        blocks=new ArrayList<Block>();
+        for(int i = 0; i < renderedChunks.size(); i++){
+            blocks.addAll(renderedChunks.get(i).getChunk());
+        }
+        assignMesh(blocks);
         //update corresponding meshes
         //check for mouse click
         //change chunk
@@ -402,9 +377,6 @@ public class Game {
         for (Block block : finalList) block.getMesh().cleanup();
     }
 
-    public Vector2f getCurrentChunkPos(int index){
-        return new Vector2f(blocks.get(index).getPos().x/16, blocks.get(index).getPos().z/16);
-    }
 
     public Vector2f getCurrentPlayerChunk(){
         return new Vector2f((camera.getPosition().x+cameraInc.x)/16, (camera.getPosition().z+cameraInc.z)/16);
@@ -502,6 +474,73 @@ public class Game {
                 return null;
             }
             return curChunk;
+        }
+    }
+
+    public int findChunk(int x, int z){
+        /*boolean notFound = true;
+        int index = chunks.size()/2;
+        int upper = chunks.size() - 1;
+        int lower = 0;
+        while(lower <= upper){
+            if(chunks.get(index).getZ() > y){
+                upper = index - 1;
+                index = (upper + lower) / 2;
+            } else if(chunks.get(index).getZ() < y){
+                lower = index + 1;
+                index = (upper + lower) / 2;
+            } else if(chunks.get(index).getX() > x){
+                upper = index - 1;
+                index = (lower + upper) / 2;
+            } else if(chunks.get(index).getX() < x){
+                lower = index + 1;
+                index = (upper + lower) / 2;
+            } else if(lower > upper){
+                index = -1;
+            }
+        }*/
+        int index = 0;
+        for(Chunk c:chunks){
+            if(c.getX() == x && c.getZ() == z){
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    public void addChunk(Chunk c){
+        for(int i = 0; i < chunks.size(); i++){
+            if(chunks.get(i).getZ() > c.getZ() || (chunks.get(i).getZ() == c.getZ() && chunks.get(i).getX() > c.getX())){
+                chunks.add(i, c);
+                return;
+            }
+        }
+        chunks.add(c);
+    }
+
+    public Chunk loadChunk(int x, int y){
+        System.out.println("pre chunk");
+        Chunk hold = new Chunk(terrain.getTerr(x, y), terrainMesh.getBiome(x,y));
+        System.out.println("post chunk");
+        return hold;
+    }
+
+    public void changeRenderedChunks(){
+        renderedChunks = new ArrayList<Chunk>();
+        Vector2f curChunk = new Vector2f(camera.getPosition().x / 16, camera.getPosition().z / 16);
+        int numRender = ((renderDistance + 15) / 16) / 2;
+        for(int x = (int) curChunk.x - numRender; x < (int) curChunk.x + numRender; x++){
+            for(int y = (int) curChunk.y - numRender; y < (int) curChunk.y + numRender; y++){
+                int index = findChunk(x, y);
+                if(index > -1){
+                    renderedChunks.add(chunks.get(index));
+                } else {
+                    Chunk c = loadChunk(x, y);
+                    addChunk(c);
+                    renderedChunks.add(c);
+                }
+            }
         }
     }
 }
